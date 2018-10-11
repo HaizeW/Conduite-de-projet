@@ -27,7 +27,10 @@ public class CatalogImpl implements Catalog {
     }
 
     public Reference findReferenceById(String id) {
-        if (!references.containsKey(id)) throw new ReferenceManagementException("cannot find Reference, id unknown !");
+        if (!references.containsKey(id)) {
+            throw new ReferenceManagementException(
+                    "cannot find Reference, id unknown !");
+        }
         return references.get(id);
     }
 

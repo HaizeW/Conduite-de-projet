@@ -19,7 +19,7 @@ public class TextualMenu {
     private PrintWriter out;
     private Catalog catalog;
 
-    protected TextualMenu(BufferedReader in , PrintWriter out) {
+    protected TextualMenu(BufferedReader in, PrintWriter out) {
         this.in = in;
         this.out = out;
         initCollection();
@@ -46,17 +46,19 @@ public class TextualMenu {
             	choice = in.readLine();
             }
             switch (choice) {
-            	default : break;
                 case "1" : createReferenceAndAddItToCatalog();
                             break;
                 case "2" : end = true;
-                			break;
+                            break;
+                default :
+                			      break;
             }
         }
     }
 
     private void createReferenceAndAddItToCatalog() throws IOException {
-        out.println("You ask to create a new reference and add it to the root catalog!");
+        out.println("You ask to create a new reference "
+                + "and add it to the root catalog!");
         out.println("Reference id (any string, must be unique) : ");
         String refId = null;
         while(refId == null) {
@@ -78,10 +80,15 @@ public class TextualMenu {
         	price = in.readLine();
         }
         Price refPrice = new Price(Integer.parseInt(price));
-        Reference reference = new Reference(refId, refName, refDescription, refPrice);
+        Reference reference = new Reference(refId,
+                                            refName,
+                                            refDescription,
+                                            refPrice);
 
         catalog.addReference(reference);
-        out.println("Reference ("+refId+") has been created and added to the catalog !");
+        out.println("Reference ("
+                   + refId
+                   + ") has been created and added to the catalog !");
     }
 
 }
