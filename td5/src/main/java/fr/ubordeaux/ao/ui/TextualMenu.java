@@ -26,7 +26,7 @@ public class TextualMenu {
     }
 
     protected TextualMenu(InputStream in, PrintStream out) {
-    	Charset cs = Charset.forName("UTF-8");
+        Charset cs = Charset.forName("UTF-8");
         this.in = new BufferedReader(new InputStreamReader(in, cs));
         this.out = new PrintWriter(new OutputStreamWriter(out, cs), true);
         initCollection();
@@ -42,16 +42,16 @@ public class TextualMenu {
             out.println("(1) Add new Reference to Catalog,  (2) exit");
             out.println("Your choice 1-2:");
             String choice = null;
-            while(choice == null) {
-            	choice = in.readLine();
+            while (choice == null) {
+                choice = in.readLine();
             }
             switch (choice) {
-                case "1" : createReferenceAndAddItToCatalog();
-                            break;
-                case "2" : end = true;
-                            break;
-                default :
-                			      break;
+            case "1" : createReferenceAndAddItToCatalog();
+            break;
+            case "2" : end = true;
+            break;
+            default :
+                break;
             }
         }
     }
@@ -61,34 +61,34 @@ public class TextualMenu {
                 + "and add it to the root catalog!");
         out.println("Reference id (any string, must be unique) : ");
         String refId = null;
-        while(refId == null) {
-        	refId = in.readLine();
+        while (refId == null) {
+            refId = in.readLine();
         }
         out.println("Reference name : ");
         String refName = null;
-        while(refName == null) {
-        	refName = in.readLine();
+        while (refName == null) {
+            refName = in.readLine();
         }
         out.println("Reference description : ");
         String refDescription = null;
-        while(refDescription == null) {
-        	refDescription = in.readLine();
+        while (refDescription == null) {
+            refDescription = in.readLine();
         }
         out.println("Price : ");
         String price = null;
-        while(price == null) {
-        	price = in.readLine();
+        while (price == null) {
+            price = in.readLine();
         }
         Price refPrice = new Price(Integer.parseInt(price));
         Reference reference = new Reference(refId,
-                                            refName,
-                                            refDescription,
-                                            refPrice);
+                refName,
+                refDescription,
+                refPrice);
 
         catalog.addReference(reference);
         out.println("Reference ("
-                   + refId
-                   + ") has been created and added to the catalog !");
+                + refId
+                + ") has been created and added to the catalog !");
     }
 
 }
